@@ -3,16 +3,16 @@
    ========================================================= */
 
 :root {
-  --bg: #0a0a0a;
-  --bg-soft: #0e0e0e;
-  --surface: #131313;
-  --surface-2: #181818;
+  --bg: #15171a;
+  --bg-soft: #1a1d21;
+  --surface: #212429;
+  --surface-2: #2a2e34;
   --ink: #f4f4f1;
   --ink-soft: rgba(244, 244, 241, 0.82);
   --paper: #ffffff;
   --muted: rgba(244, 244, 241, 0.58);
-  --line: rgba(255, 255, 255, 0.10);
-  --line-2: rgba(255, 255, 255, 0.18);
+  --line: rgba(255, 255, 255, 0.12);
+  --line-2: rgba(255, 255, 255, 0.20);
   --accent: #ccff00;
   --accent-soft: #c6fb2f;
   --accent-deep: #a3cc00;
@@ -186,7 +186,7 @@ a { color: inherit; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(10, 10, 10, 0.74);
+  background: rgba(21, 23, 26, 0.72);
   backdrop-filter: saturate(180%) blur(22px);
   -webkit-backdrop-filter: saturate(180%) blur(22px);
   border-bottom: 1px solid var(--line);
@@ -353,7 +353,7 @@ a { color: inherit; }
   width: min(290px, 100%);
   padding: 11px;
   border-radius: 40px;
-  background: linear-gradient(160deg, #23231f, #0e0e0e);
+  background: linear-gradient(160deg, #2a2e34, #15171a);
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.10),
     0 34px 70px -22px rgba(0, 0, 0, 0.9),
@@ -374,7 +374,7 @@ a { color: inherit; }
 
 .phone-screen {
   border-radius: 30px;
-  background: #0f0f0f;
+  background: #1a1d21;
   padding: 13px 16px 20px;
   overflow: hidden;
 }
@@ -400,7 +400,7 @@ a { color: inherit; }
   border-radius: 18px;
   padding: 18px 16px 16px;
   text-align: center;
-  background: linear-gradient(180deg, #161616, #101010);
+  background: linear-gradient(180deg, #23262c, #1b1e23);
   color: var(--ink);
 }
 
@@ -491,7 +491,7 @@ a { color: inherit; }
 .section-dark {
   background:
     radial-gradient(1200px 520px at 50% -22%, rgba(204, 255, 0, 0.06), transparent 62%),
-    #0c0c0c;
+    #191c20;
   color: var(--ink);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -578,7 +578,7 @@ a { color: inherit; }
   padding: 30px 26px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.045);
 }
 
 .pillar-num {
@@ -806,7 +806,7 @@ a { color: inherit; }
   padding: 13px 15px;
   border: 1px solid var(--line-2);
   border-radius: 10px;
-  background: #0f0f0f;
+  background: #1b1e23;
   color: var(--ink);
   font: inherit;
   font-size: 0.97rem;
@@ -1268,7 +1268,7 @@ a { color: inherit; }
 
 .dash {
   border-radius: 16px;
-  background: #0f0f0f;
+  background: #1b1e23;
   border: 1px solid var(--line);
   box-shadow:
     0 26px 60px -34px rgba(0, 0, 0, 0.9),
@@ -1282,7 +1282,7 @@ a { color: inherit; }
   align-items: center;
   gap: 11px;
   padding: 13px 16px;
-  background: #151515;
+  background: #23262c;
   border-bottom: 1px solid var(--line);
 }
 
@@ -1338,7 +1338,7 @@ a { color: inherit; }
   padding: 15px 17px;
   border: 1px solid var(--line);
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .dash-stat-wide { grid-column: 1 / -1; }
@@ -1392,7 +1392,7 @@ a { color: inherit; }
   padding: clamp(16px, 2vw, 20px);
   border: 1px solid var(--line);
   border-radius: 13px;
-  background: #131313;
+  background: #212429;
 }
 
 .dash-panel-head {
@@ -1639,7 +1639,7 @@ a { color: inherit; }
     align-items: stretch;
     gap: 0;
     padding: 8px 24px 20px;
-    background: #0d0d0d;
+    background: #1a1d22;
     border-bottom: 1px solid var(--line);
     display: none;
   }
