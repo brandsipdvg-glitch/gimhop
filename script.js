@@ -242,6 +242,20 @@
         return;
       }
 
+      /* No form endpoint and no contact email configured yet. Fail loudly and
+         honestly instead of opening an empty mailto: draft that silently drops
+         the enquiry. Set FORM_ENDPOINT or CONTACT_EMAIL at the top of this file
+         to activate the form. */
+      if (!CONTACT_EMAIL) {
+        restoreButton();
+        setStatus(
+          form,
+          "This form isn't connected to an inbox yet, so your message was not sent. Please try again soon.",
+          "error"
+        );
+        return;
+      }
+
       window.location.href = mailtoHref(form, data);
       finish("Your email app should now be open with everything filled in — just press send.", "ok");
     });
