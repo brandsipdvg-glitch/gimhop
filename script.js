@@ -146,7 +146,7 @@
     });
     var body = lines.join("\n") + "\n\nSent from " + window.location.href;
     return "mailto:" + CONTACT_EMAIL +
-      "?subject=" + encodeURIComponent("GimHop — " + kind) +
+      "?subject=" + encodeURIComponent("GymHopp — " + kind) +
       "&body=" + encodeURIComponent(body);
   }
 

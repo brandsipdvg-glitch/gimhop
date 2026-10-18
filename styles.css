@@ -1,5 +1,5 @@
 /* =========================================================
-   GimHop — athletic, technology-led identity
+   GymHopp — athletic, technology-led identity
    Off-white base, charcoal text, lime accents (logo-true)
    Space Grotesk (display) + Inter (body)
    ========================================================= */
@@ -312,6 +312,11 @@ a { color: inherit; }
 }
 
 .hero-title-wide { max-width: 20ch; }
+
+/* Homepage H1 stacks the headline and the value proposition as one heading */
+.hero-title-stack { max-width: none; }
+.hero-title-line { display: block; max-width: 12ch; }
+.hero-title-stack .hero-tagline { display: block; }
 
 .hero-tagline {
   margin-top: 14px;
