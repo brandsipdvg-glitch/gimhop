@@ -313,10 +313,9 @@ a { color: inherit; }
 
 .hero-title-wide { max-width: 20ch; }
 
-/* Homepage H1 stacks the headline and the value proposition as one heading */
-.hero-title-stack { max-width: none; }
-.hero-title-line { display: block; max-width: 12ch; }
-.hero-title-stack .hero-tagline { display: block; }
+/* Homepage H1: brand-led headline for clear site/entity identity */
+.hero-title-stack { max-width: none; font-size: clamp(2rem, 5vw, 3.4rem); }
+.hero-title-line { display: block; }
 
 .hero-tagline {
   margin-top: 14px;
