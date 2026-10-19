@@ -1128,6 +1128,11 @@ a { color: inherit; }
 
 .footer-contact a:hover { border-bottom-color: var(--on-dark-muted); }
 
+.footer-contact-hours {
+  font-size: 0.88rem;
+  color: var(--on-dark-muted);
+}
+
 .footer-bottom {
   margin-top: clamp(46px, 7vw, 80px);
   padding-top: 26px;
