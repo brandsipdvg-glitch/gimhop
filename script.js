@@ -2,11 +2,21 @@
   "use strict";
 
   /* Lead delivery config.
-     Set FORM_ENDPOINT to a form backend to post leads straight to your inbox,
-     e.g. Formspree ("https://formspree.io/f/xxxxxxxx"), Basin, Web3Forms, etc.
+     Set FORM_ENDPOINT to a form backend to post leads straight to your inbox.
+     This site is static (GitHub Pages), so a browser cannot send email by
+     itself — the endpoint receives the submission and relays it as an email.
+
+     Using Web3Forms: put your access key below (get it free at web3forms.com
+     by entering gymhoppdvg@outlook.com). Submissions are emailed to that
+     address the moment the visitor presses submit.
+     Any other backend (Formspree, Basin) works too — just paste its full URL.
+
      While it is empty we fall back to opening the visitor's mail client with
      the details pre-filled, so an enquiry is never silently dropped. */
-  var FORM_ENDPOINT = "";
+  var WEB3FORMS_ACCESS_KEY = "832c6f21-2888-44f9-8ddb-bddbaf796da7";
+  var FORM_ENDPOINT = WEB3FORMS_ACCESS_KEY
+    ? "https://api.web3forms.com/submit"
+    : "";
   var CONTACT_EMAIL = "gymhoppdvg@outlook.com";
 
   var header = document.querySelector(".site-header");
@@ -199,6 +209,20 @@
       data.page = window.location.href;
       data.submittedAt = new Date().toISOString();
 
+      if (WEB3FORMS_ACCESS_KEY) {
+        var kind = form.getAttribute("data-form") === "waitlist"
+          ? "Early access request"
+          : "Partner gym application";
+        data.access_key = WEB3FORMS_ACCESS_KEY;
+        data.subject = "GymHopp — " + kind;
+        data.from_name = "GymHopp website";
+        /* Web3Forms replies to from_name, so only pass an address we know is
+           well-formed. A malformed reply-to makes the whole request fail. */
+        if (data.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+          data.replyto = data.email;
+        }
+      }
+
       setStatus(form, "", "");
 
       function restoreButton() {
@@ -228,24 +252,28 @@
           body: JSON.stringify(data)
         })
           .then(function (response) {
-            if (!response.ok) throw new Error("Request failed");
+            return response.json().catch(function () { return {}; });
+          })
+          .then(function (result) {
+            if (!result.success) throw new Error(result.message || "Request failed");
             finish("Thanks — you're on the list. We'll reach out shortly.", "ok");
           })
           .catch(function () {
             restoreButton();
             setStatus(
               form,
-              "That didn't send. Please email " + (CONTACT_EMAIL || "us") + " directly and we'll add you by hand.",
+              "That didn't send — please try again, or reach us directly at " +
+                (CONTACT_EMAIL || "our email") + ".",
               "error"
             );
           });
         return;
       }
 
-      /* No form endpoint and no contact email configured yet. Fail loudly and
-         honestly instead of opening an empty mailto: draft that silently drops
-         the enquiry. Set FORM_ENDPOINT or CONTACT_EMAIL at the top of this file
-         to activate the form. */
+      /* No form endpoint configured yet. Fail loudly and honestly instead of
+         opening an empty mailto: draft that silently drops the enquiry.
+         Set WEB3FORMS_ACCESS_KEY (or FORM_ENDPOINT) at the top of this file
+         to make submissions land in the inbox automatically. */
       if (!CONTACT_EMAIL) {
         restoreButton();
         setStatus(
