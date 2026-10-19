@@ -7,7 +7,7 @@
      While it is empty we fall back to opening the visitor's mail client with
      the details pre-filled, so an enquiry is never silently dropped. */
   var FORM_ENDPOINT = "";
-  var CONTACT_EMAIL = "";
+  var CONTACT_EMAIL = "gymhoppdvg@outlook.com";
 
   var header = document.querySelector(".site-header");
   var nav = document.getElementById("nav");
