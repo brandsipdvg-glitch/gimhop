@@ -816,6 +816,16 @@ a { color: inherit; }
   color: var(--ink);
 }
 
+/* Links under the founder signature — About page and LinkedIn */
+.founder-links {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+}
+
+.founder-links .link-arrow { margin-top: 0; }
+
 .founder-note {
   padding: 28px;
   border-radius: var(--radius);
@@ -1142,6 +1152,25 @@ a { color: inherit; }
 }
 
 .footer-contact a[href*="instagram.com"] svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+
+/* LinkedIn link in the footer contact row */
+.footer-contact a[href*="linkedin.com"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--accent);
+}
+
+.footer-contact a[href*="linkedin.com"]:hover {
+  color: var(--accent-deep);
+  border-bottom-color: var(--accent-deep);
+}
+
+.footer-contact a[href*="linkedin.com"] svg {
   flex: none;
   width: 16px;
   height: 16px;
