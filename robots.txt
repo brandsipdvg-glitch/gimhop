@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# AI assistants and answer engines are welcome to read and cite this site.
+# llms.txt summarises the site for AI systems.
+# See https://gymhopp.online/llms.txt
+
 Sitemap: https://gymhopp.online/sitemap.xml
