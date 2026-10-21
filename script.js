@@ -59,6 +59,19 @@
   if (!("IntersectionObserver" in window)) {
     revealItems.forEach(function (el) { el.classList.add("is-visible"); });
   } else {
+    /* Stagger siblings within the same container so a row of cards or steps
+       cascades instead of all fading in at once. The delay is passed to CSS
+       via a custom property, which keeps the transition itself in the
+       stylesheet. */
+    var groups = new Map();
+
+    revealItems.forEach(function (el) {
+      var parent = el.parentElement;
+      var index = groups.get(parent) || 0;
+      groups.set(parent, index + 1);
+      el.style.setProperty("--reveal-delay", Math.min(index, 5) * 80 + "ms");
+    });
+
     var observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
@@ -70,10 +83,18 @@
       { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
     );
 
-    revealItems.forEach(function (el, index) {
-      el.style.transitionDelay = (index % 4) * 70 + "ms";
-      observer.observe(el);
+    revealItems.forEach(function (el) { observer.observe(el); });
+  }
+
+  /* Hero entrance: run once on load rather than waiting for a scroll, since
+     the hero is already in view. A class on <html> drives it from CSS. */
+  var hero = document.querySelector(".hero");
+  if (hero && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { hero.classList.add("is-loaded"); });
     });
+  } else if (hero) {
+    hero.classList.add("is-loaded");
   }
 
   var forms = document.querySelectorAll("form[data-form]");

@@ -188,7 +188,22 @@ img { max-width: 100%; height: auto; }
   background: var(--accent);
   color: #0d1117;
   box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
 }
+
+/* Sheen that sweeps across on hover — a small, contained flourish */
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, 0.55) 50%, transparent 62%);
+  transform: translateX(-120%);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.btn-primary:hover::after { transform: translateX(120%); }
 
 .btn-primary:hover {
   background: var(--accent-deep);
@@ -370,6 +385,24 @@ img { max-width: 100%; height: auto; }
 }
 
 .hero .eyebrow { color: var(--muted); }
+
+/* Hero entrance — plays once on load, staggered top to bottom.
+   Scoped to .js so the content is never hidden if JS fails. */
+.js .hero .hero-inner > * {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.js .hero.is-loaded .hero-inner > * {
+  opacity: 1;
+  transform: none;
+}
+
+.js .hero.is-loaded .hero-inner > *:nth-child(2) { transition-delay: 120ms; }
+.js .hero.is-loaded .hero-inner > *:nth-child(3) { transition-delay: 220ms; }
 
 .hero-inner {
   display: grid;
@@ -1831,13 +1864,18 @@ img { max-width: 100%; height: auto; }
 
 .js .reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
 }
 
 .js .reveal.is-visible {
   opacity: 1;
   transform: none;
+  will-change: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1849,6 +1887,9 @@ img { max-width: 100%; height: auto; }
   .tag:hover,
   .btn-primary:hover,
   .btn-whatsapp:hover { transform: none; }
+  /* Hero entrance and button sheen are motion-only flourishes */
+  .js .hero .hero-inner > * { opacity: 1; transform: none; transition: none; }
+  .btn-primary::after { display: none; }
 }
 
 /* Responsive */
