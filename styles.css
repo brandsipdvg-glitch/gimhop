@@ -1,29 +1,29 @@
 /* =========================================================
    GymHopp — athletic, technology-led identity
-   Off-white base, charcoal text, lime accents (logo-true)
+   Dark base, light text, lime accents (logo-true)
    Space Grotesk (display) + Inter (body)
    ========================================================= */
 
 :root {
-  --bg: #f7f8f5;
-  --bg-soft: #eef1ea;
-  --tint: #eff5e7;
-  --surface: #ffffff;
-  --surface-2: #e8ece3;
-  --ink: #101511;
-  --ink-soft: #39413a;
-  --muted: #7d8780;
-  --line: rgba(16, 21, 17, 0.09);
-  --line-2: rgba(16, 21, 17, 0.15);
+  --bg: #0b0d0b;
+  --bg-soft: #111411;
+  --tint: #141814;
+  --surface: #141814;
+  --surface-2: #1b201b;
+  --ink: #f3f5f0;
+  --ink-soft: #c3cac1;
+  --muted: #8b948a;
+  --line: rgba(255, 255, 255, 0.10);
+  --line-2: rgba(255, 255, 255, 0.18);
   --accent: #ccff00;
   --accent-deep: #b8e600;
-  --accent-ink: #476f00;   /* readable lime-derived text on light */
-  --accent-tint: #e9f6c3;
-  --danger: #b42318;
+  --accent-ink: #ccff00;   /* readable lime accent on dark */
+  --accent-tint: #1e2611;  /* dark lime-tinted surface for accent cards */
+  --danger: #ff6b5e;
   --font-head: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
   /* dark mockup islands (phone / dashboard) */
-  --dark: #101511;
+  --dark: #0f120f;
   --dark-screen: #161a17;
   --dark-2: #1e241f;
   --dark-line: rgba(255, 255, 255, 0.12);
@@ -31,10 +31,11 @@
   --on-dark-soft: rgba(242, 243, 239, 0.78);
   --on-dark-muted: rgba(242, 243, 239, 0.55);
 
-  /* Softer, layered shadows read as considered rather than synthetic */
-  --shadow-sm: 0 1px 2px rgba(16, 21, 17, 0.04), 0 2px 6px -2px rgba(16, 21, 17, 0.06);
-  --shadow-md: 0 2px 4px rgba(16, 21, 17, 0.04), 0 12px 28px -14px rgba(16, 21, 17, 0.16);
-  --shadow-lg: 0 4px 8px rgba(16, 21, 17, 0.04), 0 28px 58px -30px rgba(16, 21, 17, 0.24);
+  /* Layered shadows read as considered rather than synthetic.
+     On a dark base, depth comes from light edges plus deep shadow. */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.45), 0 14px 30px -16px rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 4px 10px rgba(0, 0, 0, 0.45), 0 30px 62px -30px rgba(0, 0, 0, 0.8);
   --ring: 0 0 0 3px rgba(204, 255, 0, 0.35);
 
   --radius: 16px;
@@ -42,7 +43,7 @@
   --radius-lg: 22px;
   --container: 1080px;
   --header-h: 68px;
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
@@ -263,7 +264,7 @@ img { max-width: 100%; height: auto; }
   font-weight: 600;
   text-decoration: none;
   color: var(--accent-ink);
-  border-bottom: 1px solid rgba(84, 125, 0, 0.4);
+  border-bottom: 1px solid rgba(204, 255, 0, 0.45);
   padding-bottom: 3px;
 }
 
@@ -275,7 +276,7 @@ img { max-width: 100%; height: auto; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(247, 248, 245, 0.82);
+  background: rgba(11, 13, 11, 0.82);
   backdrop-filter: saturate(180%) blur(16px);
   -webkit-backdrop-filter: saturate(180%) blur(16px);
   border-bottom: 1px solid var(--line);
@@ -377,8 +378,8 @@ img { max-width: 100%; height: auto; }
 
 .hero {
   background:
-    radial-gradient(900px 440px at 78% -12%, rgba(204, 255, 0, 0.30), transparent 62%),
-    radial-gradient(720px 420px at 4% 116%, rgba(204, 255, 0, 0.16), transparent 62%),
+    radial-gradient(900px 460px at 78% -14%, rgba(204, 255, 0, 0.16), transparent 62%),
+    radial-gradient(720px 420px at 4% 116%, rgba(204, 255, 0, 0.08), transparent 62%),
     var(--bg);
   color: var(--ink);
   padding: clamp(80px, 13vw, 140px) 0 clamp(64px, 9vw, 104px);
@@ -589,7 +590,7 @@ img { max-width: 100%; height: auto; }
   margin: 16px auto 0;
   padding: 11px;
   border-radius: 14px;
-  background: #fff;
+  background: #f2f3ef;   /* off-white, not pure white — still scans, less glare */
   border: 1px solid var(--dark-line);
   color: #0d1117;
 }
@@ -642,7 +643,7 @@ img { max-width: 100%; height: auto; }
 
 .section-soft { background: var(--bg-soft); }
 
-/* was the dark band — now a soft lime-tinted band for rhythm */
+/* subtle raised band for section rhythm against the dark base */
 .section-dark {
   background: var(--tint);
   color: var(--ink);
@@ -781,7 +782,7 @@ img { max-width: 100%; height: auto; }
   color: #0d1117;
   font-size: 0.9rem;
   font-weight: 700;
-  box-shadow: 0 2px 5px rgba(71, 111, 0, 0.18);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
 }
 
 .step p {
@@ -809,9 +810,9 @@ img { max-width: 100%; height: auto; }
 
 .card-feature-accent {
   background: var(--accent-tint);
-  border-color: rgba(84, 125, 0, 0.35);
+  border-color: rgba(204, 255, 0, 0.30);
   color: var(--ink);
-  box-shadow: 0 2px 4px rgba(16, 21, 17, 0.03), 0 14px 30px -16px rgba(71, 111, 0, 0.28);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4), 0 14px 32px -18px rgba(204, 255, 0, 0.22);
 }
 
 .card-feature-accent p { color: var(--ink-soft); }
@@ -841,7 +842,7 @@ img { max-width: 100%; height: auto; }
 }
 
 .compare-col-accent {
-  border-color: rgba(84, 125, 0, 0.35);
+  border-color: rgba(204, 255, 0, 0.30);
   background: var(--accent-tint);
 }
 
@@ -987,14 +988,14 @@ img { max-width: 100%; height: auto; }
   padding: 13px 15px;
   border: 1px solid var(--line-2);
   border-radius: 10px;
-  background: #fff;
+  background: var(--surface-2);
   color: var(--ink);
   font: inherit;
   font-size: 0.97rem;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.field input::placeholder { color: #9aa3ad; }
+.field input::placeholder { color: var(--muted); }
 
 .field input:focus {
   outline: none;
@@ -1029,9 +1030,9 @@ img { max-width: 100%; height: auto; }
 .form-success {
   padding: 13px 16px;
   border-radius: 10px;
-  background: #f1ffd6;
-  border: 1px solid rgba(84, 125, 0, 0.4);
-  color: #2b3d00;
+  background: var(--accent-tint);
+  border: 1px solid rgba(204, 255, 0, 0.35);
+  color: var(--accent-ink);
   font-size: 0.92rem;
   font-weight: 600;
 }
@@ -1045,14 +1046,14 @@ img { max-width: 100%; height: auto; }
 }
 
 .form-status-ok {
-  background: #f1ffd6;
-  border: 1px solid rgba(84, 125, 0, 0.4);
-  color: #2b3d00;
+  background: var(--accent-tint);
+  border: 1px solid rgba(204, 255, 0, 0.35);
+  color: var(--accent-ink);
 }
 
 .form-status-error {
-  background: #fdecea;
-  border: 1px solid #f3b7b1;
+  background: rgba(255, 107, 94, 0.12);
+  border: 1px solid rgba(255, 107, 94, 0.4);
   color: var(--danger);
 }
 
@@ -1113,7 +1114,7 @@ img { max-width: 100%; height: auto; }
   width: 100%;
   max-width: 480px;
   padding: clamp(28px, 4vw, 40px);
-  border: 1px solid rgba(84, 125, 0, 0.28);
+  border: 1px solid rgba(204, 255, 0, 0.28);
   border-radius: 18px;
   background:
     radial-gradient(420px 240px at 50% -10%, rgba(204, 255, 0, 0.35), transparent 66%),
@@ -1923,7 +1924,7 @@ img { max-width: 100%; height: auto; }
     align-items: stretch;
     gap: 0;
     padding: 8px 24px 20px;
-    background: #fff;
+    background: var(--bg-soft);
     border-bottom: 1px solid var(--line);
     display: none;
   }
